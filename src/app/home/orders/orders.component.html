@@ -1,0 +1,28 @@
+<section id="orders">
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Imie</th>
+        <th scope="col">Danie</th>
+        <th scope="col">Cena</th>
+        <th scope="col">Zapłacone</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders | async; let i = index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{order.customer}}</td>
+          <td>{{order.dinner}}</td>
+          <td>{{order.price}}</td>
+          <td>{{order.isPay}}</td>
+          <td *ngIf="order.status == true" style="color: #000000">{{order.status}}</td>
+          <td *ngIf="order.status == false" style="color: #880000">{{order.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</section>

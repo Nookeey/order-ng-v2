@@ -1,0 +1,23 @@
+<section id="add-order">
+
+  <form (ngSubmit)="onSubmit()" #addNewOrderForm="ngForm">
+    <div class="form-row align-items-md-end">
+      <div class="col-md-6 my-1">
+        <label for="customer">Imie</label>
+        <input name="customer" type="text" class="form-control" id="customer" [(ngModel)]="order.customer" #customer="ngModel">
+      </div>
+      <div class="col-md-6 my-1">
+        <label for="price">Cena</label>
+        <input name="price" type="text" class="form-control" id="price" [(ngModel)]="order.price" #price="ngModel">
+      </div>
+      <div class="col-md-11 my-1">
+        <label for="dinner">Danie</label>
+        <input name="dinner" type="text" class="form-control" id="dinner" [(ngModel)]="order.dinner" #dinner="ngModel">
+      </div>
+      <div class="col-md-1 my-1">
+        <button class="btn btn-primary">Dodaj</button>
+      </div>
+    </div>
+  </form>
+
+</section>
