@@ -1,8 +1,6 @@
-import { Order } from './../../models/order';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Order } from '../../models/order';
 
 @Component({
   selector: 'app-add-order',
@@ -11,25 +9,32 @@ import { NgForm } from '@angular/forms';
 })
 export class AddOrderComponent implements OnInit {
 
-  addNewOrderForm: NgForm;
+  orderForm: FormGroup;
 
   order = new Order();
 
-  constructor(public db: AngularFireDatabase) { }
-
   ngOnInit() {
+    this.orderForm = new FormGroup({
+      customer: new FormControl(null, Validators.required),
+      price: new FormControl(null, Validators.required),
+      dinner: new FormControl(null, Validators.required)
+    });
   }
 
   onSubmit() {
+    // console.log(this.orderForm);
+    this.order.customer = this.orderForm.value.customer;
+    this.order.price = this.orderForm.value.price;
+    this.order.dinner = this.orderForm.value.dinner;
     this.order.isPay = false;
     this.order.status = false;
-    this.db.list('/orders').push(this.order);
-    this.reset();
+    // console.log(this.order);
+    this.onReset();
   }
 
-  reset() {
-    this.order = new Order();
-    this.addNewOrderForm.resetForm(this.order);
+  onReset() {
+    this.orderForm.reset();
   }
+
 
 }

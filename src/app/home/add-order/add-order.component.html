@@ -1,21 +1,24 @@
 <section id="add-order">
 
-  <form (ngSubmit)="onSubmit()" #addNewOrderForm="ngForm">
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
     <div class="form-row align-items-md-end">
       <div class="col-md-6 my-1">
         <label for="customer">Imie</label>
-        <input name="customer" type="text" class="form-control" id="customer" [(ngModel)]="order.customer" #customer="ngModel">
+        <input type="text" class="form-control" id="customer" formControlName="customer">
+        <div *ngIf="orderForm.get('customer').invalid && orderForm.get('customer').dirty">Pole wymagane.</div>
       </div>
       <div class="col-md-6 my-1">
         <label for="price">Cena</label>
-        <input name="price" type="text" class="form-control" id="price" [(ngModel)]="order.price" #price="ngModel">
+        <input type="text" class="form-control" id="price" formControlName="price">
+        <div *ngIf="orderForm.get('price').invalid && orderForm.get('price').dirty">Pole wymagane.</div>
       </div>
       <div class="col-md-11 my-1">
         <label for="dinner">Danie</label>
-        <input name="dinner" type="text" class="form-control" id="dinner" [(ngModel)]="order.dinner" #dinner="ngModel">
+        <input type="text" class="form-control" id="dinner" formControlName="dinner">
+        <div *ngIf="orderForm.get('dinner').invalid && orderForm.get('dinner').dirty">Pole wymagane.</div>
       </div>
       <div class="col-md-1 my-1">
-        <button class="btn btn-primary">Dodaj</button>
+        <button type="submit" class="btn btn-primary" [disabled]="orderForm.invalid">Dodaj</button>
       </div>
     </div>
   </form>

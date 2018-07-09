@@ -1,3 +1,4 @@
+import { OrderService } from './services/orders.service';
 import { SharedModule } from './shared/shared.module';
 
 import { AppRoutingModule } from './app.routing.module';
@@ -6,8 +7,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-
-import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -19,12 +18,11 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     SharedModule
   ],
-  providers: [],
+  providers: [OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
