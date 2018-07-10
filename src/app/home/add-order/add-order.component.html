@@ -9,7 +9,7 @@
       </div>
       <div class="col-md-6 my-1">
         <label for="price">Cena</label>
-        <input type="text" class="form-control" id="price" formControlName="price">
+        <input type="number" class="form-control" id="price" formControlName="price">
         <div *ngIf="orderForm.get('price').invalid && orderForm.get('price').dirty">Pole wymagane.</div>
       </div>
       <div class="col-md-11 my-1">

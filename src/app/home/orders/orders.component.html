@@ -3,23 +3,29 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Imie</th>
-        <th scope="col">Danie</th>
-        <th scope="col">Cena</th>
-        <th scope="col">Zapłacone</th>
-        <th scope="col">Status</th>
+        <th width="140px">#</th>
+        <th width="250px">Imie</th>
+        <th width="auto">Danie</th>
+        <th width="140px">Cena</th>
+        <th width="140px">Zapłacone</th>
+        <th width="200px">Opcje</th>
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let order of orders; let i = index">
+      <ng-container *ngFor="let order of orders | async; let i = index">
         <tr *ngIf="order.status == true">
           <th scope="row">{{i+1}}</th>
           <td>{{order.customer}}</td>
           <td>{{order.dinner}}</td>
           <td>{{order.price}}</td>
-          <td *ngIf="order.isPay == true; else notPay">TAK</td>
-          <td *ngIf="order.status == true; else statusFalse">TRUE</td>
+          <td *ngIf="order.isPayd == true;" (click)="setNotPayd(order.key)"><button type="button" class="btn btn-outline-success btn-sm">Tak</button></td>
+          <td *ngIf="order.isPayd == false;" (click)="setIsPayd(order.key)"><button type="button" class="btn btn-outline-danger btn-sm">Nie</button></td>
+          <td>
+            <div class="btn-group btn-group-sm" role="group">
+              <button type="button" class="btn btn-primary">Edytuj</button>
+              <button type="button" class="btn btn-danger" (click)="deleteOrder(order.key)">Usuń</button>
+            </div>
+          </td>
         </tr>
       </ng-container>
     </tbody>
@@ -27,14 +33,6 @@
 
   <ng-template #noOrders>
     <p>BRAK ZAMÓWIEŃ</p>
-  </ng-template>
-
-  <ng-template #notPay>
-    <td style="color: #e60000">NIE</td>
-  </ng-template>
-
-  <ng-template #statusFalse>
-    <td style="color: #e60000">FALSE</td>
   </ng-template>
 
 </section>

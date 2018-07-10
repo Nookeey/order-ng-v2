@@ -1,3 +1,4 @@
+import { OrderService } from './../../services/orders.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Order } from '../../models/order';
@@ -13,6 +14,8 @@ export class AddOrderComponent implements OnInit {
 
   order = new Order();
 
+  constructor(private orderService: OrderService) { }
+
   ngOnInit() {
     this.orderForm = new FormGroup({
       customer: new FormControl(null, Validators.required),
@@ -26,9 +29,10 @@ export class AddOrderComponent implements OnInit {
     this.order.customer = this.orderForm.value.customer;
     this.order.price = this.orderForm.value.price;
     this.order.dinner = this.orderForm.value.dinner;
-    this.order.isPay = false;
+    this.order.isPayd = false;
     this.order.status = false;
     // console.log(this.order);
+    this.orderService.addOrder(this.order);
     this.onReset();
   }
 

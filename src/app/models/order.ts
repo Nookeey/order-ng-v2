@@ -3,6 +3,6 @@ export class Order {
   customer: string;
   price: string;
   dinner: string;
-  isPay: boolean;
+  isPayd: boolean;
   status: boolean;
 }
