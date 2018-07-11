@@ -8,8 +8,6 @@ import 'rxjs/add/operator/map';
 export class OrderService {
 
   private basePath = '/orders';
-  public orders: any;
-  public order: any;
   public selectedOrder: Order = new Order();
 
   constructor(private db: AngularFireDatabase) {}
@@ -59,25 +57,5 @@ export class OrderService {
       dinner: order.dinner
     });
   }
-
-  // EXAMPLES ->
-  // addToList(item: any) {
-  //   this.questions.push(item);
-  // }
-  // removeItemFromList(key: string) {
-  //   this.questions.remove(key).then(_ => console.log('item deleted!'));
-  // }
-  // deleteEntireList() {
-  //   this.questions.remove().then(_ => console.log('deleted!'));
-  // }
-  // setValue(data: any) {
-  //   this.value.set(data).then(_ => console.log('set!'));
-  // }
-  // updateValue(data: any) {
-  //   this.value.update(data).then(_ => console.log('update!'));
-  // }
-  // deleteValue() {
-  //   this.value.remove().then(_ => console.log('deleted!'));
-  // }
 
 }

@@ -26,10 +26,6 @@ export class OrdersComponent implements OnInit {
     this.orderService.deleteOrder(key);
   }
 
-  deleteAllOrders() {
-    this.orderService.deleteAllOrders();
-  }
-
   setIsPayd(key) {
     this.orderService.setIsPayd(key);
   }

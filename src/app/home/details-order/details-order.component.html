@@ -1,0 +1,60 @@
+<section id="detaild-order" class="card">
+  <div class="header">
+    <h6><strong>Szczegoły zamowienia</strong></h6>
+  </div>
+
+    <ul class="list-group" *ngFor="let details of detailsObs | async;">
+      <li class="list-group-item"><strong>Zamawia:</strong> <span>{{details.person}}</span></li>
+      <li class="list-group-item"><strong>Skąd:</strong> <span><a href="{{details.link}}" target="_blank">{{details.restaurant}}</a></span></li>
+      <li class="list-group-item"><strong>Informacja:</strong> <span>{{details.info}}</span></li>
+      <li class="list-group-item"><strong>Deadline:</strong> <span>{{details.deadline}}</span></li>
+      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#detailsOrder" (click)="setModalVal(details)">Edytuj szczegoły zamowienia</button>
+    </ul>
+
+  <button class="btn btn-outline-danger" (click)="deleteAllOrders()">Usuń wszystkie zamowienia</button>
+</section>
+
+
+<div class="modal fade" id="detailsOrder" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <form #detailsForm="ngForm" (ngSubmit)="onSubmit(detailsForm)">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Edytuj szczegoły zamowienia</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="detailsService.selectedDetails.key">
+          <div class="form-row align-items-md-end">
+            <div class="col-md-12 my-1">
+              <label for="person">Zamawiający</label>
+              <input type="text" class="form-control" name="person" #person="ngModel" [(ngModel)]="detailsService.selectedDetails.person">
+            </div>
+            <div class="col-md-12 my-1">
+              <label for="restaurant">Skad</label>
+              <input type="text" class="form-control" name="restaurant" #restaurant="ngModel" [(ngModel)]="detailsService.selectedDetails.restaurant">
+            </div>
+            <div class="col-md-12 my-1">
+              <label for="link">Link</label>
+              <input type="text" class="form-control" name="link" #link="ngModel" [(ngModel)]="detailsService.selectedDetails.link">
+            </div>
+            <div class="col-md-12 my-1">
+              <label for="info">Informacja</label>
+              <input type="text" class="form-control" name="info" #info="ngModel" [(ngModel)]="detailsService.selectedDetails.info">
+            </div>
+            <div class="col-md-12 my-1">
+                <label for="deadline">Informacja</label>
+                <input type="text" class="form-control" name="deadline" #deadline="ngModel" [(ngModel)]="detailsService.selectedDetails.deadline">
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+          <button type="submit" class="btn btn-primary">Zapisz</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
