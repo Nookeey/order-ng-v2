@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { OrderService } from './../../services/orders.service';
 import { Component, OnInit } from '@angular/core';
+import { Order } from '../../models/order';
 
 @Component({
   selector: 'app-orders',
@@ -25,12 +26,20 @@ export class OrdersComponent implements OnInit {
     this.orderService.deleteOrder(key);
   }
 
+  deleteAllOrders() {
+    this.orderService.deleteAllOrders();
+  }
+
   setIsPayd(key) {
     this.orderService.setIsPayd(key);
   }
 
   setNotPayd(key) {
     this.orderService.setNotPayd(key);
+  }
+
+  getOrder(order: Order) {
+    this.orderService.selectedOrder = Object.assign({}, order);
   }
 
 }

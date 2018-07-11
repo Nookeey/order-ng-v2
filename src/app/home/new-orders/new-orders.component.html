@@ -23,7 +23,7 @@
           <td>
             <div class="btn-group btn-group-sm" role="group">
               <button type="button" class="btn btn-success" (click)="acceptOrder(order.key);">Akceptuj</button>
-              <button type="button" class="btn btn-primary">Edytuj</button>
+              <button type="button" class="btn btn-primary" (click)="getOrder(order)" data-toggle="modal" data-target="#editOrder">Edytuj</button>
               <button type="button" class="btn btn-danger" (click)="deleteOrder(order.key)">Usuń</button>
             </div>
           </td>

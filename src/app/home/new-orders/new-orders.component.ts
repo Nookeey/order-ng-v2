@@ -1,3 +1,5 @@
+import { Order } from './../../models/order';
+import { EditOrderComponent } from './../edit-order/edit-order.component';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OrderService } from '../../services/orders.service';
@@ -10,6 +12,8 @@ import { OrderService } from '../../services/orders.service';
 export class NewOrdersComponent implements OnInit {
 
   public orders: Observable<any[]>;
+
+  public order = new Order();
 
   constructor(private orderService: OrderService) { }
 
@@ -35,6 +39,10 @@ export class NewOrdersComponent implements OnInit {
 
   setNotPayd(key) {
     this.orderService.setNotPayd(key);
+  }
+
+  getOrder(order: Order) {
+    this.orderService.selectedOrder = Object.assign({}, order);
   }
 
 }

@@ -1,3 +1,4 @@
+import { Order } from './../models/order';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
@@ -9,13 +10,14 @@ export class OrderService {
   private basePath = '/orders';
   public orders: any;
   public order: any;
+  public selectedOrder: Order = new Order();
 
   constructor(private db: AngularFireDatabase) {}
 
   addOrder(order) {
-    const obj = this.db.database.ref(this.basePath);
-    obj.push(order);
-    console.log('Success');
+    this.db.list(this.basePath).push(order).then(_ =>
+      console.log('Dodano nowe zamowienie')
+    );
   }
 
   getOrders(): Observable<any[]> {
@@ -26,6 +28,10 @@ export class OrderService {
 
   deleteOrder(key) {
     this.db.list(this.basePath).remove(key);
+  }
+
+  deleteAllOrders() {
+    this.db.list(this.basePath).remove();
   }
 
   acceptOrder(key) {
@@ -43,6 +49,14 @@ export class OrderService {
   setNotPayd(key) {
     this.db.list(this.basePath).update(key, {
       isPayd: false
+    });
+  }
+
+  updateOrder(order: Order) {
+    this.db.list(this.basePath).update(order.$key, {
+      customer: order.customer,
+      price: order.price,
+      dinner: order.dinner
     });
   }
 

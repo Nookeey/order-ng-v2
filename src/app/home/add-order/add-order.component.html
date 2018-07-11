@@ -12,12 +12,12 @@
         <input type="number" class="form-control" id="price" formControlName="price">
         <div *ngIf="orderForm.get('price').invalid && orderForm.get('price').dirty">Pole wymagane.</div>
       </div>
-      <div class="col-md-11 my-1">
+      <div class="col-md-12 my-1">
         <label for="dinner">Danie</label>
         <input type="text" class="form-control" id="dinner" formControlName="dinner">
         <div *ngIf="orderForm.get('dinner').invalid && orderForm.get('dinner').dirty">Pole wymagane.</div>
       </div>
-      <div class="col-md-1 my-1">
+      <div class="col-md-3 my-1">
         <button type="submit" class="btn btn-primary" [disabled]="orderForm.invalid">Dodaj</button>
       </div>
     </div>
