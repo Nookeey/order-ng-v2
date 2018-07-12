@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../../services/auth.service';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { DetailsService } from './../../services/details.service';
@@ -17,8 +19,11 @@ export class DetailsOrderComponent implements OnInit {
 
   detailsObs: Observable<any>;
 
-  constructor(public orderService: OrderService, public detailsService: DetailsService) {
-  }
+  constructor(
+    public orderService: OrderService,
+    public detailsService: DetailsService,
+    public authService: AuthService,
+    private router: Router) {}
 
   ngOnInit() {
     this.getDetails();
@@ -38,6 +43,11 @@ export class DetailsOrderComponent implements OnInit {
 
   deleteAllOrders() {
     this.orderService.deleteAllOrders();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['']);
   }
 
 }

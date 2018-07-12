@@ -8,10 +8,11 @@
       <li class="list-group-item"><strong>Skąd:</strong> <span><a href="{{details.link}}" target="_blank">{{details.restaurant}}</a></span></li>
       <li class="list-group-item"><strong>Informacja:</strong> <span>{{details.info}}</span></li>
       <li class="list-group-item"><strong>Deadline:</strong> <span>{{details.deadline}}</span></li>
-      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#detailsOrder" (click)="setModalVal(details)">Edytuj szczegoły zamowienia</button>
+      <button *ngIf="authService.user" class="btn btn-outline-primary" data-toggle="modal" data-target="#detailsOrder" (click)="setModalVal(details)">Edytuj szczegoły zamowienia</button>
     </ul>
 
-  <button class="btn btn-outline-danger" (click)="deleteAllOrders()">Usuń wszystkie zamowienia</button>
+  <button *ngIf="authService.user" class="btn btn-outline-danger" (click)="deleteAllOrders()">Usuń wszystkie zamowienia</button>
+  <button *ngIf="authService.user" class="btn btn-outline-warning" (click)="logout()">Wyloguj</button>
 </section>
 
 

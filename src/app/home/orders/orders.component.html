@@ -12,7 +12,7 @@
         <th width="auto">Danie</th>
         <th width="140px">Cena</th>
         <th width="140px">Zapłacone</th>
-        <th width="200px">Opcje</th>
+        <th *ngIf="authService.user" width="200px">Opcje</th>
       </tr>
     </thead>
     <tbody>
@@ -24,7 +24,7 @@
           <td>{{order.price}}</td>
           <td *ngIf="order.isPayd == true;" (click)="setNotPayd(order.key)"><button type="button" class="btn btn-outline-success btn-sm">Tak</button></td>
           <td *ngIf="order.isPayd == false;" (click)="setIsPayd(order.key)"><button type="button" class="btn btn-outline-danger btn-sm">Nie</button></td>
-          <td>
+          <td *ngIf="authService.user">
             <div class="btn-group btn-group-sm" role="group">
               <button type="button" class="btn btn-primary" (click)="getOrder(order)" data-toggle="modal" data-target="#editOrder">Edytuj</button>
               <button type="button" class="btn btn-danger" (click)="deleteOrder(order.key)">Usuń</button>

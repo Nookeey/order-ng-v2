@@ -1,4 +1,4 @@
-<section id="new-orders" class="card">
+<section *ngIf="authService.user" id="new-orders" class="card">
 
   <div class="header">
       <h6><strong>Nowe zamowienia</strong></h6>

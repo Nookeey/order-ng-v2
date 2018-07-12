@@ -1,5 +1,5 @@
+import { AuthService } from './../../services/auth.service';
 import { Order } from './../../models/order';
-import { EditOrderComponent } from './../edit-order/edit-order.component';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OrderService } from '../../services/orders.service';
@@ -15,7 +15,7 @@ export class NewOrdersComponent implements OnInit {
 
   public order = new Order();
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, public authService: AuthService) { }
 
   ngOnInit() {
     this.orders = this.getOrders();

@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const appRoutes: Routes = [
-  { path: '', loadChildren: './home/home.module#HomeModule' }
+  { path: '', loadChildren: './home/home.module#HomeModule' },
+  { path: 'admin', loadChildren: './auth/auth.module#AuthModule' }
 ];
 
 @NgModule({

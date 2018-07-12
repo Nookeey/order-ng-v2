@@ -4,7 +4,6 @@ import { HomeComponent, AddOrderComponent, NewOrdersComponent, OrdersComponent, 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     HomeRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    MDBBootstrapModule.forRoot()
   ]
 })
 export class HomeModule {}

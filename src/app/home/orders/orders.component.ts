@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { OrderService } from './../../services/orders.service';
 import { Component, OnInit } from '@angular/core';
 import { Order } from '../../models/order';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-orders',
@@ -12,7 +13,7 @@ export class OrdersComponent implements OnInit {
 
   public orders: Observable<any[]>;
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, public authService: AuthService) { }
 
   ngOnInit() {
     this.orders = this.getOrders();
