@@ -1,6 +1,7 @@
 import { OrderService } from './../../services/orders.service';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-edit-order',
@@ -19,3 +20,4 @@ export class EditOrderComponent {
   }
 
 }
+

@@ -1,5 +1,5 @@
 export class Details {
-  $key: string;
+  key: string;
   person: string;
   restaurant: string;
   link: string;

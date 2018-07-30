@@ -10,8 +10,8 @@ export class AuthService {
 
   private basePath = 'admin';
 
-  private email = 'admin@order.com';
-  private password = 'admin12';
+  private email = 'order.xnh@gmail.com';
+  private password = 'order1234';
 
   private admin: Observable<any>;
   private curAdminKey: string;
@@ -78,9 +78,11 @@ export class AuthService {
       } else {
         if ( (new Date().toLocaleDateString() === this.curAdminData) && (this.curAdminPass === newPassword)) {
           // Zaloguj
+          console.log('zaloguj');
           this.login();
         } else if ( (new Date().toLocaleDateString() === this.curAdminData) && (this.curAdminPass !== newPassword) ) {
           // Admin zajęty
+          console.log('Admin zajety');
         } else if (new Date().toLocaleDateString() !== this.curAdminData) {
           // Zaloguj nowego Admina
           console.log('Nowy Admin');

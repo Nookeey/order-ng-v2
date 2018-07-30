@@ -51,7 +51,7 @@ export class OrderService {
   }
 
   updateOrder(order: Order) {
-    this.db.list(this.basePath).update(order.$key, {
+    this.db.list(this.basePath).update(order.key, {
       customer: order.customer,
       price: order.price,
       dinner: order.dinner

@@ -37,7 +37,7 @@ export class DetailsService {
   }
 
   updateDetails(details: Details) {
-    this.db.list(this.basePath).update(details.$key, {
+    this.db.list(this.basePath).update(details.key, {
       person: details.person,
       restaurant: details.restaurant,
       link: details.link,

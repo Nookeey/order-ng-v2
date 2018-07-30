@@ -1,5 +1,5 @@
 export class Order {
-  $key: string;
+  key: string;
   customer: string;
   price: string;
   dinner: string;

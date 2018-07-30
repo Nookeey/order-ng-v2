@@ -23,7 +23,8 @@ export class DetailsOrderComponent implements OnInit {
     public orderService: OrderService,
     public detailsService: DetailsService,
     public authService: AuthService,
-    private router: Router) {}
+    private router: Router) {
+    }
 
   ngOnInit() {
     this.getDetails();
